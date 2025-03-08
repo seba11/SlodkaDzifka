@@ -1,26 +1,54 @@
-<html>
+<!DOCTYPE html>
+<html lang="pl">
 <head>
-<style>
-	body {
-		background-color: black;
-	}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slodka Dzifka</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+        }
+
+        iframe {
+            border: none;
+        }
+
+        /* Układ na komputerach */
+        .player {
+            width: 80%;
+            height: 100%;
+        }
+
+        .chat {
+            width: 20%;
+            height: 100%;
+        }
+
+        /* Układ na urządzeniach mobilnych */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .player {
+                width: 100%;
+                height: 50%;
+            }
+
+            .chat {
+                width: 100%;
+                height: 50%;
+            }
+        }
+    </style>
 </head>
 <body>
-<iframe 
-     src="https://player.kick.com/SlodkaDzifka?autoplay=true" 
-     height="80%" 
-     width="80%"
-     frameborder="0" 
-     scrolling="no" 
-     allowfullscreen="true"> 
-</iframe>
-<iframe 
-     src="https://kick.com/popout/pajalock/chat" 
-     height="80%"
-	 width="18%"
-	 frameborder="0" 
-     scrolling="no" 
-</iframe>
+    <iframe class="player" src="https://player.kick.com/SlodkaDzifka?autoplay=true&muted=false" allowfullscreen></iframe>
+    <iframe class="chat" src="https://kick.com/popout/pajalock/chat"></iframe>
 </body>
 </html>
