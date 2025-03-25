@@ -18,7 +18,6 @@
             border: none;
         }
 
-        /* Układ na komputerach */
         .player {
             width: 80%;
             height: 100%;
@@ -29,7 +28,6 @@
             height: 100%;
         }
 
-        /* Układ na urządzeniach mobilnych */
         @media (max-width: 768px) {
             body {
                 flex-direction: column;
@@ -37,16 +35,57 @@
 
             .player {
                 width: 100%;
-                height: 50%;
+                height: 35%;
             }
 
             .chat {
                 width: 100%;
-                height: 50%;
+                height: 65%;
             }
         }
+
+        .floating-btn {
+            position: fixed;
+            bottom: 15px;
+            right: 5px;
+            background-color: #42ca13;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            z-index: 1000;
+            font-size: 13px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+        }
+
+        .chat-menu {
+            position: fixed;
+            bottom: 50px;
+            right: 10px;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 13px;
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        .chat-menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            margin-bottom: 5px;
+            border-radius: 3px;
+            background-color: #42ca13;
+        }
+
+        .chat-menu a:hover {
+            background-color: #42ca13;
+        }
     </style>
-    <!-- Open Graph & Xcom tags -->
     <meta property="og:title" content="Niebo Sigma restream" />
     <meta property="og:description" content="Nie wspieramy majonezowego cwelostwa 🔥" />
     <meta property="og:image" content="https://1a-1791.com/video/fww1/9c/s8/1/c/U/a/v/cUavy.0kob-small-NIE-WSPIERAMY-CWELOSTWA.jpg" />
@@ -60,10 +99,27 @@
     <meta name="twitter:player" content="https://rumble.com/embed/v6osr44/?pub=3f1qgr" />
     <meta name="twitter:player:width" content="1280" />
     <meta name="twitter:player:height" content="720" />
-
 </head>
 <body>
     <iframe class="player" src="https://peertube.wtf/videos/embed/xA3UishESaVsVEp2CTAYC6?autoplay=1&amp;warningTitle=0&amp;peertubeLink=0" allowfullscreen></iframe>
-    <iframe class="chat" src="https://kick.com/popout/pajalock/chat"></iframe>
+    <iframe class="chat" id="chatFrame" src="https://kick.com/popout/pajalock/chat"></iframe>
+
+    <div class="floating-btn" onclick="toggleMenu()">☰ Zmień chat</div>
+    <div class="chat-menu" id="chatMenu">
+        <a href="#" onclick="changeChat('https://kick.com/popout/pajalock/chat')">Majonez</a>
+        <a href="#" onclick="changeChat('https://kick.com/popout/slodkapinki/chat')">Cwelica</a>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('chatMenu');
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function changeChat(url) {
+            document.getElementById('chatFrame').src = url;
+            toggleMenu();
+        }
+    </script>
 </body>
 </html>
